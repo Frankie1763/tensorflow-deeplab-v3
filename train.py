@@ -218,7 +218,7 @@ def main(unused_argv):
     shutil.rmtree(FLAGS.model_dir, ignore_errors=True)
 
   # Set up a RunConfig to only save checkpoints once per training cycle.
-  run_config = tf.estimator.RunConfig().replace(save_checkpoints_secs=1e9)
+  run_config = tf.estimator.RunConfig().replace(save_checkpoints_steps=200)
   model = tf.estimator.Estimator(
       model_fn=deeplab_model.deeplabv3_model_fn,
       model_dir=FLAGS.model_dir,
